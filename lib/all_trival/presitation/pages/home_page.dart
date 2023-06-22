@@ -14,8 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late AllBloc allBloc;
-  bool isSearch = false;
-
   _HomePageState();
 
   @override
