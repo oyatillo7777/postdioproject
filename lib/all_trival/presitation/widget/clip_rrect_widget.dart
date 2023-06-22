@@ -93,6 +93,7 @@ class _ClipWidgetState extends State<ClipWidget> {
                                     },
                                   ))),
                           Expanded(
+                            //jdfkslfjsdllfksjl
                               flex: 1,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
