@@ -5,10 +5,9 @@ abstract class AllEvent {}
 
 class GetAllCountryModelEvent extends AllEvent {
   final bool refresh;
+  final int page;
 
-  GetAllCountryModelEvent(this.refresh);
+  GetAllCountryModelEvent(this.refresh, this.page);
 }
 
-class GetAllCountryModelPageEvent extends AllEvent {
 
-}

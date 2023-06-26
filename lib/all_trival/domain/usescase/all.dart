@@ -15,17 +15,17 @@ class AllCountryModelUsesCase
   @override
   Future<Either<Failure, List<AllCountryModel>>> call(
       AllCountryModelParams params) {
-    return allCountryModelRepository.getAllCountryModel(params.refresh);
+    return allCountryModelRepository.getAllCountryModel(
+        params.refresh, params.page);
   }
 }
 
 class AllCountryModelParams extends Equatable {
   final bool refresh;
+  final int page;
 
-  const AllCountryModelParams(this.refresh);
+  const AllCountryModelParams(this.refresh, this.page);
 
   @override
-  List<Object?> get props => [refresh];
+  List<Object?> get props => [refresh, page];
 }
-
-

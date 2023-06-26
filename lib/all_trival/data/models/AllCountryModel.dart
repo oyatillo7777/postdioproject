@@ -9,7 +9,6 @@ List<AllCountryModel> listFromJson(dynamic txt) {
 
 @HiveType(typeId: 0)
 class AllCountryModel {
-  static const String boxKey = 'item';
 
   AllCountryModel({
     this.name,

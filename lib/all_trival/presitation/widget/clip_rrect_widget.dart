@@ -28,7 +28,6 @@ class _ClipWidgetState extends State<ClipWidget> {
                 (scrollNotification.metrics.pixels / 100.0).ceil();
             if (visibleItemsCount % 20 == 0 &&
                 scrollNotification.metrics.pixels != 0) {
-              CircularProgressIndicator();
             }
           }
           return false;
@@ -102,8 +101,6 @@ class _ClipWidgetState extends State<ClipWidget> {
                                   style: TextStyle(fontSize: 18),
                                 ),
                               )),
-                          if ((index + 1) % 20 == 0)
-                            CupertinoActivityIndicator()
                         ],
                       ),
                     ),

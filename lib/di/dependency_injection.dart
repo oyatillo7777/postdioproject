@@ -7,7 +7,6 @@ import 'package:postdioproject/all_trival/data/datasourse/remote_datasourse.dart
 import 'package:postdioproject/all_trival/data/repositories/repositories.dart';
 import 'package:postdioproject/all_trival/domain/repositories/repositories.dart';
 import 'package:postdioproject/all_trival/domain/usescase/all.dart';
-import 'package:postdioproject/all_trival/domain/usescase/get_poken_usescase.dart';
 import 'package:postdioproject/all_trival/presitation/bloc/all_bloc.dart';
 import 'package:postdioproject/network/network.dart';
 
@@ -35,26 +34,26 @@ Future<void> initS() async {
 
   diAllCountryModel.registerLazySingleton(() =>
       AllCountryModelUsesCase(allCountryModelRepository: diAllCountryModel()));
-  diAllCountryModel
-      .registerLazySingleton(() => GetAllUseCase(diAllCountryModel()));
 
   diAllCountryModel.registerFactory(() => AllBloc(
-      allCountryModelUsesCase: diAllCountryModel(),
-      getAllUseCase: diAllCountryModel()));
+        allCountryModelUsesCase: diAllCountryModel(),
+      ));
 
   await Hive.initFlutter();
-  Hive.registerAdapter(AllCountryModelAdapter());
+
   Hive.registerAdapter(PostalCodeAdapter());
   Hive.registerAdapter(CapitalInfoAdapter());
   Hive.registerAdapter(CoatOfArmsAdapter());
   Hive.registerAdapter(FlagsAdapter());
   Hive.registerAdapter(LanguagesAdapter());
   Hive.registerAdapter(NameAdapter());
-
-  await Hive.openBox("AllCountryModelAdapterBox");
-  await Hive.openBox("PostalCodeAdapterBox");
-  await Hive.openBox("CapitalInfoAdapterBox");
-  await Hive.openBox("CoatOfArmsAdapterBox");
-  await Hive.openBox("FlagsAdapterBox");
-  await Hive.openBox("NameAdapterBox");
+  if (Hive.isAdapterRegistered(0)) {
+    Hive.registerAdapter(AllCountryModelAdapter());
+    await Hive.openBox("AllCountryModelAdapterBox");
+  }
+  // await Hive.openBox("PostalCodeAdapterBox");
+  // await Hive.openBox("CapitalInfoAdapterBox");
+  // await Hive.openBox("CoatOfArmsAdapterBox");
+  // await Hive.openBox("FlagsAdapterBox");
+  // await Hive.openBox("NameAdapterBox");
 }

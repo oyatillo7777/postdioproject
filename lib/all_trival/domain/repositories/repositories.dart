@@ -5,8 +5,6 @@ import '../../data/models/AllCountryModel.dart';
 
 abstract class AllCountryModelRepository {
   Future<Either<Failure, List<AllCountryModel>>> getAllCountryModel(
-      bool refresh);
+      bool refresh,int page);
 
-  Future<Either<Failure, List<AllCountryModel>>> getAllCountryModelPage(
-      {required int page});
 }

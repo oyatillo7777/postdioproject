@@ -14,12 +14,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late AllBloc allBloc;
+
   _HomePageState();
 
   @override
   void initState() {
     allBloc = BlocProvider.of<AllBloc>(context)
-      ..add(GetAllCountryModelEvent(true));
+      ..add(GetAllCountryModelEvent(true, 1));
     super.initState();
   }
 
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
-          allBloc.add(GetAllCountryModelEvent(true));
+          allBloc.add(GetAllCountryModelEvent(true, 0));
         },
         child: BlocConsumer<AllBloc, AllState>(
           listener: (context, state) {

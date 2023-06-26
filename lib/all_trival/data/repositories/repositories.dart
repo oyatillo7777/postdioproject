@@ -19,7 +19,7 @@ class AllCountryModelRepositoryImpl extends AllCountryModelRepository {
 
   @override
   Future<Either<Failure, List<AllCountryModel>>> getAllCountryModel(
-      bool refresh) async {
+      bool refresh, int page) async {
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDataSourseImpl.getPosts();
@@ -30,23 +30,11 @@ class AllCountryModelRepositoryImpl extends AllCountryModelRepository {
       }
     } else {
       try {
-        final result = await localDataSourseImpl.getPosts();
+        final result = await localDataSourseImpl.getPage(page: page);
         return Right(result);
       } on LocalFailure {
         return Left(LocalFailure("Ichki xatolik"));
       }
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<AllCountryModel>>> getAllCountryModelPage(
-      {required int page}) async {
-    try {
-      final AllHiveModel =
-          await localDataSourseImpl.getPokemons(page: page);
-      return Right(AllHiveModel);
-    } on ServerFailure {
-      return Left(ServerFailure('Ichki Xatolik'));
     }
   }
 }
