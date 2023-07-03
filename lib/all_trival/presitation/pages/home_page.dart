@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
-          allBloc.add(GetAllCountryModelEvent(true, 0));
+          allBloc.add(GetAllCountryModelEvent(true, 1));
         },
         child: BlocConsumer<AllBloc, AllState>(
           listener: (context, state) {

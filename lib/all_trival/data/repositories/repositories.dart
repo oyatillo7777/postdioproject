@@ -20,6 +20,7 @@ class AllCountryModelRepositoryImpl extends AllCountryModelRepository {
   @override
   Future<Either<Failure, List<AllCountryModel>>> getAllCountryModel(
       bool refresh, int page) async {
+    print(networkInfo.isConnected);
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDataSourseImpl.getPosts();

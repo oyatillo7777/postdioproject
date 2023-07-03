@@ -47,13 +47,13 @@ Future<void> initS() async {
   Hive.registerAdapter(FlagsAdapter());
   Hive.registerAdapter(LanguagesAdapter());
   Hive.registerAdapter(NameAdapter());
-  if (Hive.isAdapterRegistered(0)) {
+  if (!Hive.isAdapterRegistered(0)) {
     Hive.registerAdapter(AllCountryModelAdapter());
     await Hive.openBox("AllCountryModelAdapterBox");
   }
-  // await Hive.openBox("PostalCodeAdapterBox");
-  // await Hive.openBox("CapitalInfoAdapterBox");
-  // await Hive.openBox("CoatOfArmsAdapterBox");
-  // await Hive.openBox("FlagsAdapterBox");
-  // await Hive.openBox("NameAdapterBox");
+  await Hive.openBox("PostalCodeAdapterBox");
+  await Hive.openBox("CapitalInfoAdapterBox");
+  await Hive.openBox("CoatOfArmsAdapterBox");
+  await Hive.openBox("FlagsAdapterBox");
+  await Hive.openBox("NameAdapterBox");
 }
